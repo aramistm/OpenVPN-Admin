@@ -21,7 +21,9 @@ fi
 
 # Ensure there are enought arguments
 if [ "$#" -ne 4 ]; then
-  echo "debug: $#"
+  echo "Ensure there are enought arguments"
+  echo "debug: Arguments: $#"
+  echo "debug: $www, $user, $group, $mysql_root_pass"
   print_help
   exit
 fi

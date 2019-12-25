@@ -1,14 +1,14 @@
 #!/bin/bash
 
-print_help() {
+print_help () {
   echo -e "./install.sh www_basedir user group"
   echo -e "\tbase_dir: The place where the web application will be put in"
   echo -e "\tuser:     User of the web application"
   echo -e "\tgroup:    Group of the web application"
-  echo -e "\tmysql_root_pass: "
+  echo -e "\tmysql_root_pass: Mysql pass"
 }
 
-random-string()
+random-string ()
 {
     cat /dev/urandom | tr -dc "a-zA-Z0-9!@#$%^&*()_+?><~\`;'" | fold -w ${1:-32} | head -n 1
 }

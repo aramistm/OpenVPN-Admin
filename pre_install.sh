@@ -11,10 +11,10 @@ fi
 
 random-string()
 {
-    cat /dev/urandom | tr -dc "a-zA-Z0-9!@#$%^&*()_+?><~\`;'" | fold -w ${1:-32} | head -n 1
+    cat /dev/urandom | tr -dc "a-zA-Z0-9@#$%^&*()_+?><~\`;'" | fold -w ${1:-32} | head -n 1
 }
 
-mysql_root_pass=random-string 10
+mysql_root_pass=$( random-string 10 )
 
 sed -i "s/mysql_root_pass=''/mysql_root_pass='$mysql_root_pass'/" "config.txt"
 
@@ -36,11 +36,15 @@ cd ~/git
 git clone https://github.com/aramistm/OpenVPN-Admin openvpn-admin
 cd openvpn-admin
 chmod +x install.sh
+
+echo -e ""
+echo -e "Start main install"
+
 ./install.sh /var/www www-data www-data $mysql_root_pass
 
 echo -e ""
 echo -e "The script finished install. Now your server will reboot."
-echo "Please reboot your system"
+echo -e "Please reboot your system"
 read -p "Want you that your system will reboot [y/N]: " -e -i y REBOOT
 
 if [[ "$REBOOT" = 'y' || "$REBOOT" = 'Y' ]]; then

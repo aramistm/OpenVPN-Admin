@@ -66,7 +66,6 @@ sed -i "s/mysql_root_pass=''/mysql_root_pass='$mysql_root_pass'/" "config.txt"
 
 base_path=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-
 printf "\n################## Server informations ##################\n"
 
 read -p "Server Hostname/IP: " -e -i $ip_server ip_server

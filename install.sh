@@ -62,6 +62,8 @@ if [ ! -d "$www" ] ||  ! grep -q "$user" "/etc/passwd" || ! grep -q "$group" "/e
   exit
 fi
 
+sed -i "s/mysql_root_pass=''/mysql_root_pass='$mysql_root_pass'/" "config.txt"
+
 base_path=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 

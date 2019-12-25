@@ -23,7 +23,7 @@ fi
 if [ "$#" -ne 4 ]; then
   echo "Ensure there are enought arguments"
   echo "debug: Arguments: $#"
-  echo "debug: $www, $user, $group, $mysql_root_pass"
+  echo "debug: $1, $2, $3, $4"
   print_help
   exit
 fi

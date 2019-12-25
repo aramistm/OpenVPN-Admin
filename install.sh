@@ -1,11 +1,11 @@
 #!/bin/bash
 
-print_help () {
+print_help() {
   echo -e "./install.sh www_basedir user group"
   echo -e "\tbase_dir: The place where the web application will be put in"
   echo -e "\tuser:     User of the web application"
   echo -e "\tgroup:    Group of the web application"
-  echo -e "\mysql_root_pass: "
+  echo -e "\tmysql_root_pass: "
 }
 
 random-string()
@@ -21,6 +21,7 @@ fi
 
 # Ensure there are enought arguments
 if [ "$#" -ne 4 ]; then
+  echo "debug: $#"
   print_help
   exit
 fi
@@ -54,6 +55,7 @@ openvpn_admin="$www/openvpn-admin"
 
 # Check the validity of the arguments
 if [ ! -d "$www" ] ||  ! grep -q "$user" "/etc/passwd" || ! grep -q "$group" "/etc/group" ; then
+  echo "debug: $www, $user, $group, $mysql_root_pass"
   print_help
   exit
 fi
